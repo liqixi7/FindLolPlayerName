@@ -1,13 +1,5 @@
-﻿  main.cpp
-  openfile.cpp
-D:\VSForFindName\FindName\openfile.cpp(278,16): warning C4476: "printf": 格式说明符中的类型字段字符“!”未知
-D:\VSForFindName\FindName\openfile.cpp(278,67): warning C4474: printf: 格式字符串中传递的参数太多
-D:\VSForFindName\FindName\openfile.cpp(278,67): message : 占位符和其参数预计 0 可变参数，但提供的却是 1 参数
-D:\VSForFindName\FindName\openfile.cpp(285,16): warning C4476: "printf": 格式说明符中的类型字段字符“!”未知
-D:\VSForFindName\FindName\openfile.cpp(285,68): warning C4474: printf: 格式字符串中传递的参数太多
-D:\VSForFindName\FindName\openfile.cpp(285,68): message : 占位符和其参数预计 0 可变参数，但提供的却是 1 参数
-  正在生成代码...
-D:\VSForFindName\FindName\openfile.cpp(99): warning C4715: “OpenRoomLog”: 不是所有的控件路径都返回值
-D:\VSForFindName\FindName\openfile.cpp(269): warning C4172: 返回局部变量或临时变量的地址: buff
-D:\VSForFindName\FindName\openfile.cpp(251): warning C4715: “GetNameFromLog”: 不是所有的控件路径都返回值
+﻿  openfile.cpp
+D:\VSForFindName\FindName\openfile.cpp(103): warning C4715: “OpenRoomLog”: 不是所有的控件路径都返回值
+D:\VSForFindName\FindName\openfile.cpp(279): warning C4172: 返回局部变量或临时变量的地址: buff
+D:\VSForFindName\FindName\openfile.cpp(261): warning C4715: “GetNameFromLog”: 不是所有的控件路径都返回值
   FindName.vcxproj -> D:\VSForFindName\FindName\x64\Debug\FindName.exe

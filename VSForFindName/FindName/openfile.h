@@ -1,5 +1,6 @@
 #ifndef OPEN_FILE_H
 #define OPEN_FILE_H
+#include "main.h"
 bool OpenBlackTxt(void);
 int GetFileNumber(char* addr);
 bool OpenRoomLog(void);
@@ -10,4 +11,7 @@ int Utf8ToANSI(char* argvin, char* argvout);
 void cpfile(char* path_from, char* path_to);
 char* UnicodeToANSI(const wchar_t* str);
 void windows_cmd_support_utf8(void);
+#if USE_ENTER
+void EnterRoomLog(void);
+#endif
 #endif

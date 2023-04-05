@@ -81,6 +81,7 @@ bool OpenRoomLog(void)
         printf("OPEN FAILED\n");
         return false;
     }
+    printf("本房间玩家有：\n");
     for (i = 0; i < 5; i++)
     {
         fgets(&buff[i][0], 301, fp);
@@ -90,11 +91,14 @@ bool OpenRoomLog(void)
             //if (((buff[i][j]) == 0xffffffbc) && ((buff[i][j + 1]) == 0xffffffd3) && ((buff[i][j + 2]) == 0xffffffc8) && ((buff[i][j + 3]) == 0xffffffeb))/*%bc%d3%c8%eb*/
             if (((buff[i][j]) == 0xffffffe5) && ((buff[i][j + 1]) == 0xffffff8a) && ((buff[i][j + 2]) == 0xffffffa0) && ((buff[i][j + 3]) == 0xffffffe5))
             {
+
                 memcpy(&OnlyNameGame[i][0], &buff[i][0], j);
                 OnlyNameGame[i][j] = '/';
+                printf("%s,", &OnlyNameGame[i][0]);
             }
         }
     }
+    printf("\n");
     fclose(fp);
 }
 bool CompareTwoFileName(void)
@@ -180,6 +184,8 @@ bool CompareTwoFileName(void)
     return 0;
 }
 /*get name from LOL file log(auto)*/
+//#include <iostream>   //编译预处理命令
+//using namespace std;    //使用命名空间
 char GetNameFromLog(void)
 {
     char* ptr = GetTheMostNewFileName();
@@ -215,6 +221,7 @@ char GetNameFromLog(void)
     int endbyte = 0;
     int count = 0;
     char* pTemp = 0;
+    printf("本局内玩家有\n");
     for (i = 0; i < FileNumber; i++)/*find line by line*/
     {
         fgets(&buff[i][0], 300, fp);
@@ -236,10 +243,12 @@ char GetNameFromLog(void)
             {
                 memcpy(&NameFromLOLLog[count][0], &buff[i][startbyte], (endbyte - startbyte + 1));
                 NameFromLOLLog[count][endbyte - startbyte + 1] = '/';
-                windows_cmd_support_utf8();
+                //windows_cmd_support_utf8();
                 // pTemp = UnicodeToANSI((const wchar_t*)&NameFromLOLLog[count][0]);
                 endbyte = 0;
                 count++;
+                //cout << " " << NameFromLOLLog[count][0] << '\n';
+                printf("%s,", &NameFromLOLLog[count][0]);
                 if (count > 9)
                 {
                     i = FileNumber;
@@ -248,6 +257,7 @@ char GetNameFromLog(void)
             }
         }
     }
+    printf("\n");
 }
 /*get LOL file log`s file name*/
 char* GetTheMostNewFileName(void)
@@ -275,14 +285,14 @@ int Utf8ToANSI(char* argvin, char* argvout)
     FILE* in_file = 0;
     if ((fopen_s(&in_file, argvin, "r")) != 0)
     {
-        printf("Error: could not open input file %!s(MISSING)\n", argvin);
+        printf("Error: could not open input file %s(MISSING)\n", argvin);
         return 1;
     }
 
     FILE* out_file = 0;
     if ((fopen_s(&out_file, "D:/PyForFindLOLName/gamename/gamename.txt", "a+")) != 0)
     {
-        printf("Error: could not open output file %!s(MISSING)\n", argvout);
+        printf("Error: could not open output file %s(MISSING)\n", argvout);
         fclose(out_file);
         return 1;
     }
@@ -314,3 +324,14 @@ void windows_cmd_support_utf8(void)
     system("chcp 65001 & cls");
 #endif
 }
+#if USE_ENTER
+void EnterRoomLog(void)
+{
+    printf("enter the room information\n");
+    scanf_s("%s", &OnlyNameGame[0][0], 256);
+    scanf_s("%s", &OnlyNameGame[1][0], 256);
+    scanf_s("%s", &OnlyNameGame[2][0], 256);
+    scanf_s("%s", &OnlyNameGame[3][0], 256);
+    scanf_s("%s", &OnlyNameGame[4][0], 256);
+}
+#endif
